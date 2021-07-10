@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVCCourse210710.Models;
+using MVCCourse210710.ViewModels;
 
 namespace MVCCourse210710.Controllers
 {
@@ -48,17 +49,23 @@ namespace MVCCourse210710.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "DepartmentID,Name,Budget,StartDate,InstructorID,RowVersion")] Department department)
+        public ActionResult Create(DepartmentCreate d)
         {
             if (ModelState.IsValid)
             {
+                Department department = new Department();
+                department.Name = d.Name;
+                department.Budget = d.Budget;
+                department.InstructorID = d.InstructorID;
+                department.StartDate = DateTime.Now;
+
                 db.Department.Add(department);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.InstructorID = new SelectList(db.Person, "ID", "LastName", department.InstructorID);
-            return View(department);
+            ViewBag.InstructorID = new SelectList(db.Person, "ID", "LastName", d.InstructorID);
+            return View(d);
         }
 
         // GET: Departments/Edit/5
