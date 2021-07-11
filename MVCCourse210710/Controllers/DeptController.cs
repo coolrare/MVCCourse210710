@@ -41,6 +41,7 @@ namespace MVCCourse210710.Controllers
                 Name = p.FirstName + " " + p.LastName
             });
             ViewBag.InstructorID = new SelectList(personDDLList, "ID", "Name");
+
             return View();
         }
 
@@ -61,6 +62,12 @@ namespace MVCCourse210710.Controllers
                 return RedirectToAction("Index");
             }
 
+            var personDDLList = db.Person.Select(p => new {
+                p.ID,
+                Name = p.FirstName + " " + p.LastName
+            });
+            ViewBag.InstructorID = new SelectList(personDDLList, "ID", "Name");
+
             return View(department);
         }
 
@@ -80,6 +87,13 @@ namespace MVCCourse210710.Controllers
             {
                 return HttpNotFound();
             }
+
+            var personDDLList = db.Person.Select(p => new {
+                p.ID,
+                Name = p.FirstName + " " + p.LastName
+            });
+            ViewBag.InstructorID = new SelectList(personDDLList, "ID", "Name");
+
             return View(department);
         }
 
@@ -94,6 +108,12 @@ namespace MVCCourse210710.Controllers
 
                 return RedirectToAction("Index");
             }
+
+            var personDDLList = db.Person.Select(p => new {
+                p.ID,
+                Name = p.FirstName + " " + p.LastName
+            });
+            ViewBag.InstructorID = new SelectList(personDDLList, "ID", "Name");
 
             return View(department);
         }
