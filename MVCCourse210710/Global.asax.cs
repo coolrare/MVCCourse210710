@@ -1,3 +1,4 @@
+using MVCCourse210710.ValidationAttributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,9 @@ namespace MVCCourse210710
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            DataAnnotationsModelValidatorProvider.RegisterAdapter(typeof(BudgetRangeAttribute), typeof(BudgetRangeAttributeAdapter));
+
         }
     }
 }
