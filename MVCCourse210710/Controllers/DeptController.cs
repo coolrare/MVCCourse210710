@@ -36,6 +36,11 @@ namespace MVCCourse210710.Controllers
 
         public ActionResult Create()
         {
+            var personDDLList = db.Person.Select(p => new {
+                p.ID,
+                Name = p.FirstName + " " + p.LastName
+            });
+            ViewBag.InstructorID = new SelectList(personDDLList, "ID", "Name");
             return View();
         }
 

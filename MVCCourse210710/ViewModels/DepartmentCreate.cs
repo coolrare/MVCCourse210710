@@ -13,6 +13,8 @@ namespace MVCCourse210710.ViewModels
         public string Name { get; set; }
         [Range(0, 99999, ErrorMessage = "請輸入合理的預算範圍 ({1} ~ {2})")]
         public decimal Budget { get; set; }
+
+        [UIHint("InstructorID")]
         public Nullable<int> InstructorID { get; set; }
     }
 }
