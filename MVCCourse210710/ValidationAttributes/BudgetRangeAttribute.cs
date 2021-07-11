@@ -1,44 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace MVCCourse210710.ValidationAttributes
 {
-    public class BudgetRangeAttribute : DataTypeAttribute
+    public class BudgetRangeAttribute : RangeAttribute
     {
-        public decimal MinValue { get; set; }
-        public decimal MaxValue { get; set; }
-
-        public BudgetRangeAttribute() : base(DataType.Text)
+        public BudgetRangeAttribute() : base(0, 100)
         {
-            MinValue = 0;
-            MaxValue = 100;
-
-            ErrorMessage = $"請輸入合理的預算範圍 ({MinValue} ~ {MaxValue})";
         }
 
-        public BudgetRangeAttribute(decimal minValue = 0, decimal maxValue = 100) : base(DataType.Text)
+        public BudgetRangeAttribute(int minimum, int maximum) : base(minimum, maximum)
         {
-            MinValue = minValue;
-            MaxValue = maxValue;
-
-            ErrorMessage = $"請輸入合理的預算範圍 ({MinValue} ~ {MaxValue})";
         }
 
-        public BudgetRangeAttribute(int minValue = 0, int maxValue = 100) : base(DataType.Text)
+        public BudgetRangeAttribute(double minimum, double maximum) : base(minimum, maximum)
         {
-            MinValue = minValue;
-            MaxValue = maxValue;
-
-            ErrorMessage = $"請輸入合理的預算範圍 ({MinValue} ~ {MaxValue})";
         }
 
-        public override bool IsValid(object value)
+        public BudgetRangeAttribute(Type type, string minimum, string maximum) : base(type, minimum, maximum)
         {
-            var obj = (decimal)value;
-            return (obj >= MinValue && obj <= MaxValue);
+        }
+
+        public override string FormatErrorMessage(string name)
+        {
+            ErrorMessage = "請輸入合理的預算範圍 ({1} ~ {2})";
+            return base.FormatErrorMessage(name);
         }
     }
 }

@@ -33,10 +33,10 @@ namespace MVCCourse210710.Models
         [Required(ErrorMessageResourceType = typeof(Resource1), ErrorMessageResourceName = "Department_Name_Required")]
         //[是否為身份證字號]
         public string Name { get; set; }
-        //[Range(0, 100, ErrorMessage = "請輸入合理的預算範圍 ({1} ~ {2})")]
-        //[BudgetRange(minValue: 10, maxValue: 1000)]
-        [BudgetRange]
+
+        [BudgetRange(0, 99)]
         public decimal Budget { get; set; }
+        
         [UIHint("InstructorID")]
         public Nullable<int> InstructorID { get; set; }
     }
