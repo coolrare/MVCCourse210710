@@ -208,6 +208,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource1.resx</DependentUpon>
     </Compile>
+    <Compile Include="ValidationAttributes\BudgetRangeAttribute.cs" />
+    <Compile Include="ValidationAttributes\是否為身份證字號Attribute.cs" />
     <Compile Include="ViewModels\DepartmentEdit.cs" />
     <Compile Include="ViewModels\DepartmentCreate.cs" />
   </ItemGroup>
