@@ -64,12 +64,21 @@ namespace MVCCourse210710.Controllers
 
         public ActionResult Edit(int id)
         {
-            Department department = db.Department.Find(id);
+            var department = (from p in db.Department
+                                where p.DepartmentID == id
+                                select new DepartmentEdit()
+                                {
+                                    Budget = p.Budget,
+                                    Name = p.Name,
+                                    InstructorID = p.InstructorID,
+                                    StartDate = p.StartDate
+                                }).FirstOrDefault();
+
             if (department == null)
             {
                 return HttpNotFound();
             }
-            return View(new DepartmentEdit().InjectFrom(department));
+            return View(department);
         }
 
         [HttpPost]
