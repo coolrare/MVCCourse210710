@@ -27,15 +27,13 @@ namespace MVCCourse210710.Models
         public System.DateTime StartDate { get; set; }
         [UIHint("InstructorID")] 
         public Nullable<int> InstructorID { get; set; }
-        [Required]
-        public byte[] RowVersion { get; set; }
     }
 
     public partial class DepartmentCreateMetaData
     {
         [Required(ErrorMessageResourceType = typeof(Resource1), ErrorMessageResourceName = "Department_Name_Required")]
         public string Name { get; set; }
-        [Range(0, 99999, ErrorMessage = "請輸入合理的預算範圍 ({1} ~ {2})")]
+        [Range(0, 100, ErrorMessage = "請輸入合理的預算範圍 ({1} ~ {2})")]
         public decimal Budget { get; set; }
 
         [UIHint("InstructorID")]
@@ -46,7 +44,7 @@ namespace MVCCourse210710.Models
     {
         [Required(ErrorMessageResourceType = typeof(Resource1), ErrorMessageResourceName = "Department_Name_Required")]
         public string Name { get; set; }
-        [Range(0, 99999, ErrorMessage = "請輸入合理的預算範圍 ({1} ~ {2})")]
+        [Range(0, 100, ErrorMessage = "請輸入合理的預算範圍 ({1} ~ {2})")]
         public decimal Budget { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]

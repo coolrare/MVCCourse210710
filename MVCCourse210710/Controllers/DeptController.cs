@@ -55,7 +55,20 @@ namespace MVCCourse210710.Controllers
                 dept.StartDate = DateTime.Now;
 
                 db.Department.Add(dept);
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                {
+                    foreach (var eves in ex.EntityValidationErrors)
+                    {
+                        foreach (var ves in eves.ValidationErrors)
+                        {
+                            throw new Exception(ves.PropertyName + ": " + ves.ErrorMessage);
+                        }
+                    }
+                }
 
                 //db.Department_Insert(department.Name, department.Budget, DateTime.Now, null);
 
