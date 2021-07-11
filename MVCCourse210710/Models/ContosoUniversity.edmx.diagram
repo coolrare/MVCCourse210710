@@ -9,11 +9,20 @@
         <EntityTypeShape EntityType="ContosoUniversityModel.Department" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ContosoUniversityModel.Enrollment" Width="1.5" PointX="7.5" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="ContosoUniversityModel.OfficeAssignment" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ContosoUniversityModel.Person" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="ContosoUniversityModel.Person" Width="1.5" PointX="0.625" PointY="1.875" IsExpanded="true" />
         <AssociationConnector Association="ContosoUniversityModel.FK_dbo_Course_dbo_Department_DepartmentID" ManuallyRouted="false" />
         <AssociationConnector Association="ContosoUniversityModel.FK_dbo_Enrollment_dbo_Course_CourseID" ManuallyRouted="false" />
         <AssociationConnector Association="ContosoUniversityModel.FK_dbo_Department_dbo_Instructor_InstructorID" ManuallyRouted="false" />
-        <AssociationConnector Association="ContosoUniversityModel.FK_dbo_Enrollment_dbo_Person_StudentID" ManuallyRouted="false" />
+        <AssociationConnector Association="ContosoUniversityModel.FK_dbo_Enrollment_dbo_Person_StudentID" ManuallyRouted="true" >
+          <ConnectorPoint PointX="2.125" PointY="3.7796188326998874" />
+          <ConnectorPoint PointX="3.89875" PointY="3.7796188326998874" />
+          <ConnectorPoint PointX="3.89875" PointY="3.8058615451388889" />
+          <ConnectorPoint PointX="5.72625" PointY="3.8058615451388889" />
+          <ConnectorPoint PointX="5.72625" PointY="3.9586393229166665" />
+          <ConnectorPoint PointX="6.1547916666666671" PointY="3.9586393229166661" />
+          <ConnectorPoint PointX="6.3214583333333332" PointY="3.9586393229166665" />
+          <ConnectorPoint PointX="7.5" PointY="3.9586393229166665" />
+        </AssociationConnector>
         <AssociationConnector Association="ContosoUniversityModel.FK_dbo_OfficeAssignment_dbo_Instructor_InstructorID" ManuallyRouted="false" />
         <AssociationConnector Association="ContosoUniversityModel.CourseInstructor" ManuallyRouted="false" />
       </Diagram>
