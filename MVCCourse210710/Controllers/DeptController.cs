@@ -56,6 +56,8 @@ namespace MVCCourse210710.Controllers
                 db.Department.Add(dept);
                 db.SaveChanges();
 
+                //db.Department_Insert(department.Name, department.Budget, DateTime.Now, null);
+
                 return RedirectToAction("Index");
             }
 

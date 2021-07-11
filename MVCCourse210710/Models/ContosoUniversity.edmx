@@ -437,6 +437,28 @@
                 <ScalarProperty Name="InstructorID" ColumnName="InstructorID" />
               </MappingFragment>
             </EntityTypeMapping>
+            <EntityTypeMapping TypeName="ContosoUniversityModel.Department">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="ContosoUniversityModel.Store.Department_Insert">
+                  <ScalarProperty Name="InstructorID" ParameterName="InstructorID" />
+                  <ScalarProperty Name="StartDate" ParameterName="StartDate" />
+                  <ScalarProperty Name="Budget" ParameterName="Budget" />
+                  <ScalarProperty Name="Name" ParameterName="Name" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="ContosoUniversityModel.Store.Department_Update">
+                  <ScalarProperty Name="RowVersion" ParameterName="RowVersion_Original" Version="Current" />
+                  <ScalarProperty Name="InstructorID" ParameterName="InstructorID" Version="Current" />
+                  <ScalarProperty Name="StartDate" ParameterName="StartDate" Version="Current" />
+                  <ScalarProperty Name="Budget" ParameterName="Budget" Version="Current" />
+                  <ScalarProperty Name="Name" ParameterName="Name" Version="Current" />
+                  <ScalarProperty Name="DepartmentID" ParameterName="DepartmentID" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="ContosoUniversityModel.Store.Department_Delete">
+                  <ScalarProperty Name="RowVersion" ParameterName="RowVersion_Original" />
+                  <ScalarProperty Name="DepartmentID" ParameterName="DepartmentID" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Enrollment">
             <EntityTypeMapping TypeName="ContosoUniversityModel.Enrollment">
