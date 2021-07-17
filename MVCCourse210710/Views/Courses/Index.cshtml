@@ -15,13 +15,31 @@
        </text>
     }
 </p>
+
+@using (Html.BeginForm("Index", "Courses", FormMethod.Get))
+{
+    <p>
+        搜尋：@Html.TextBox("keyword")
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
+            <a href="@Url.Action("Index", new {
+                    sortBy = "Credits", 
+                    sortDirection = "ASC", 
+                    keyword = Html.Value("keyword") })">⬆</a>
+            
             @Html.DisplayNameFor(model => model.Credits)
+
+            <a href="@Url.Action("Index", new { 
+                    sortBy = "Credits", 
+                    sortDirection = "DESC", 
+                    keyword = Html.Value("keyword") })">⬇</a>
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Department.Name)

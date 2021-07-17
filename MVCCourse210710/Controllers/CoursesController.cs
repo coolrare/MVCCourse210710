@@ -7,14 +7,13 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVCCourse210710.Models;
+using MVCCourse210710.ViewModels;
 using Omu.ValueInjecter;
 
 namespace MVCCourse210710.Controllers
 {
     public class CoursesController : BaseController
     {
-        //private ContosoUniversityEntities db = new ContosoUniversityEntities();
-
         CourseRepository repo = RepositoryHelper.GetCourseRepository();
         DepartmentRepository repoDept;
 
@@ -24,31 +23,16 @@ namespace MVCCourse210710.Controllers
         }
 
         // GET: Courses
-        public ActionResult Index(string keyword = "")
+        public ActionResult Index(CourseFilter filter)
         {
-            // 1
-            //return View(repo.Search(keyword));
+            if (!ModelState.IsValid)
+            {
+                ViewData.Model = new List<Course>();
+                return View();
+            }
 
-            // 2
-            if (!String.IsNullOrEmpty(keyword))
-            {
-                ViewData.Model = repo.Search(keyword);
-            }
-            else
-            {
-                ViewData.Model = repo.All();
-            }
+            ViewData.Model = repo.Search(filter);
             return View();
-
-
-            //return new ViewResult
-            //{
-            //    ViewName = "Index",
-            //    MasterName = "",
-            //    ViewData = ViewData,
-            //    TempData = TempData,
-            //    ViewEngineCollection = ViewEngineCollection
-            //};
         }
 
         // GET: Courses/Details/5

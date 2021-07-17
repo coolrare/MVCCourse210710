@@ -1,7 +1,11 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-	
+using MVCCourse210710.ViewModels;
+using EntityFramework.DynamicLinq;
+using System.Data.Entity;
+using System.Linq.Dynamic.Core;
+
 namespace MVCCourse210710.Models
 {   
 	public  class CourseRepository : EFRepository<Course>, ICourseRepository
@@ -16,16 +20,16 @@ namespace MVCCourse210710.Models
             return this.All().FirstOrDefault(p => p.CourseID == id);
         }
 
-        public IQueryable<Course> Search(string keyword)
+        public IQueryable<Course> Search(CourseFilter filter)
         {
             var data = this.All();
 
-            if (!String.IsNullOrEmpty(keyword))
+            if (!String.IsNullOrEmpty(filter.keyword))
             {
-                data = data.Where(p => p.Title.Contains(keyword) && p.Credits > 1);
+                data = data.Where(p => p.Title.Contains(filter.keyword));
             }
-
-            data = data.OrderByDescending(p => p.Credits);
+            
+            data = data.OrderBy(filter.sortBy + " " + filter.sortDirection);
 
             return data;
         }
