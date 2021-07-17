@@ -52,5 +52,21 @@ namespace MVCCourse210710.Controllers
                 "防疫_收費站提示_2_A3(4).jpg");
         }
 
+        public ActionResult JsonR()
+        {
+            return Json(new
+            {
+                Name = "Will"
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        //public ActionResult ExcelR()
+        //{
+        //    return new ExcelResult(new
+        //    {
+        //        Name = "Will"
+        //    });
+        //}
+
     }
 }
