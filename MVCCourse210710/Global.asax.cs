@@ -20,6 +20,9 @@ namespace MVCCourse210710
 
             DataAnnotationsModelValidatorProvider.RegisterAdapter(typeof(BudgetRangeAttribute), typeof(BudgetRangeAttributeAdapter));
 
+            ViewEngines.Engines.Clear();
+            ViewEngines.Engines.Add(new RazorViewEngine());
+
         }
     }
 }
