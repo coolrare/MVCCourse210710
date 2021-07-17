@@ -24,10 +24,9 @@ namespace MVCCourse210710.Controllers
         }
 
         // GET: Courses
-        public ActionResult Index()
+        public ActionResult Index(string keyword = "")
         {
-            var course = repo.All();
-            return View(course.ToList());
+            return View(repo.Search(keyword));
         }
 
         // GET: Courses/Details/5
@@ -37,7 +36,7 @@ namespace MVCCourse210710.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Course course = repo.All().FirstOrDefault(p => p.CourseID == id);
+            Course course = repo.FindOne(id.Value);
             if (course == null)
             {
                 return HttpNotFound();
@@ -78,7 +77,7 @@ namespace MVCCourse210710.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Course course = repo.All().FirstOrDefault(p => p.CourseID == id);
+            Course course = repo.FindOne(id.Value);
             if (course == null)
             {
                 return HttpNotFound();
@@ -96,7 +95,7 @@ namespace MVCCourse210710.Controllers
         {
             if (ModelState.IsValid)
             {
-                Course c = repo.All().FirstOrDefault(p => p.CourseID == course.CourseID);
+                Course c = repo.FindOne(course.CourseID);
                 c.InjectFrom(course);
                 repo.UnitOfWork.Commit();
 
@@ -113,7 +112,7 @@ namespace MVCCourse210710.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Course course = repo.All().FirstOrDefault(p => p.CourseID == id);
+            Course course = repo.FindOne(id.Value);
             if (course == null)
             {
                 return HttpNotFound();
@@ -126,8 +125,8 @@ namespace MVCCourse210710.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Course course = repo.All().FirstOrDefault(p => p.CourseID == id);
-            course.IsDeleted = true;
+            Course course = repo.FindOne(id);
+            repo.Delete(course);
             repo.UnitOfWork.Commit();
             return RedirectToAction("Index");
         }
