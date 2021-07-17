@@ -11,10 +11,8 @@ using MVCCourse210710.ViewModels;
 
 namespace MVCCourse210710.Controllers
 {
-    public class DepartmentsController : Controller
+    public class DepartmentsController : BaseController
     {
-        private ContosoUniversityEntities db = new ContosoUniversityEntities();
-
         // GET: Departments
         public ActionResult Index()
         {

@@ -11,9 +11,8 @@ using Omu.ValueInjecter;
 
 namespace MVCCourse210710.Controllers
 {
-    public class DeptController : Controller
+    public class DeptController : BaseController
     {
-        ContosoUniversityEntities db = new ContosoUniversityEntities();
         public DeptController()
         {
             db.Database.Log = (msg) => Debug.WriteLine(msg);
