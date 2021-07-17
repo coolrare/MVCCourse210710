@@ -14,6 +14,7 @@ namespace MVCCourse210710.Controllers
 {
     public class CoursesController : BaseController
     {
+
         CourseRepository repo = RepositoryHelper.GetCourseRepository();
         DepartmentRepository repoDept;
 
@@ -27,8 +28,7 @@ namespace MVCCourse210710.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewData.Model = new List<Course>();
-                return View();
+                return View(new List<Course>());
             }
 
             ViewData.Model = repo.Search(filter);
