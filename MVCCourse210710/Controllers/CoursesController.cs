@@ -26,9 +26,20 @@ namespace MVCCourse210710.Controllers
         // GET: Courses
         public ActionResult Index(string keyword = "")
         {
-            return View(repo.Search(keyword));
+            // 1
+            //return View(repo.Search(keyword));
 
-            //ViewData.Model = repo.Search(keyword);
+            // 2
+            if (!String.IsNullOrEmpty(keyword))
+            {
+                ViewData.Model = repo.Search(keyword);
+            }
+            else
+            {
+                ViewData.Model = repo.All();
+            }
+            return View();
+
 
             //return new ViewResult
             //{
