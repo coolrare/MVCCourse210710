@@ -11,8 +11,8 @@
         return new CourseFilter()
         {
             keyword = Html.Value("keyword").ToString(),
-            sortBy = Html.Value("sortBy").ToString(),
-            sortDirection = Html.Value("sortDirection").ToString()
+            sortBy = sortBy,
+            sortDirection = sortDirection
         };
     }
 }
