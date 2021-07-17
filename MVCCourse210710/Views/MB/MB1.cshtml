@@ -1,0 +1,35 @@
+﻿@model String
+
+@{
+    ViewBag.Title = "MB1";
+}
+
+<h2>MB1</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>變數名稱</th>
+        <th>變數值</th>
+    </tr>
+    <tr>
+        <td>ViewData.Model</td>
+        <td>@Model</td>
+    </tr>
+    <tr>
+        <td>ViewData["Data"]</td>
+        <td>@ViewData["Data"]</td>
+    </tr>
+    <tr>
+        <td>ViewBag.Data</td>
+        <td>@ViewBag.Data</td>
+    </tr>
+    <tr>
+        <td>TempData["TmpData"]</td>
+        <td>@TempData["TmpData"]</td>
+    </tr>
+    <tr>
+        <td>Session["SessionData"]</td>
+        <td>@Session["SessionData"]</td>
+    </tr>
+    
+</table>

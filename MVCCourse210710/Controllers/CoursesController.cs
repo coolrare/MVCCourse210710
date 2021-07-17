@@ -121,6 +121,8 @@ namespace MVCCourse210710.Controllers
                 c.InjectFrom(course);
                 repo.UnitOfWork.Commit();
 
+                TempData["Message"] = "更新 " + c.Title + " 成功!";
+
                 return RedirectToAction("Index");
             }
             ViewBag.DepartmentID = new SelectList(repoDept.All(), "DepartmentID", "Name", course.DepartmentID);

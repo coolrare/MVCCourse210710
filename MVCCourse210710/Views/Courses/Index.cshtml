@@ -8,6 +8,12 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
+    @if (TempData["Message"] != null)
+    {
+       <text>
+        | <span style="color: red">@TempData["Message"]</span>
+       </text>
+    }
 </p>
 <table class="table">
     <tr>
