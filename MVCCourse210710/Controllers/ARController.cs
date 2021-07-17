@@ -24,6 +24,14 @@ namespace MVCCourse210710.Controllers
         {
             return View("VR2", "_Layout2");
         }
+        public ActionResult PVR1()
+        {
+            return PartialView("VR2");
+        }
 
+        public ActionResult Robots()
+        {
+            return PartialView();
+        }
     }
 }
