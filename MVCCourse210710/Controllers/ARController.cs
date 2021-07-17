@@ -33,5 +33,24 @@ namespace MVCCourse210710.Controllers
         {
             return PartialView();
         }
+
+        public ActionResult FRView()
+        {
+            return View();
+        }
+
+        public ActionResult FR1(bool isDownload = false)
+        {
+            return File(Server.MapPath("~/Content/Image.jpg"), "image/jpeg");
+        }
+
+        public ActionResult FR2()
+        {
+            return File(Server.MapPath(
+                "~/Content/Image.jpg"), 
+                "image/jpeg", 
+                "防疫_收費站提示_2_A3(4).jpg");
+        }
+
     }
 }
