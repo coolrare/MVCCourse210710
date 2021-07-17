@@ -249,6 +249,7 @@
     </Compile>
     <Compile Include="ValidationAttributes\BudgetRangeAttribute.cs" />
     <Compile Include="ValidationAttributes\是否為身份證字號Attribute.cs" />
+    <Compile Include="ViewModels\MBViewModel.cs" />
     <Compile Include="ViewModels\DepartmentEdit.cs" />
     <Compile Include="ViewModels\DepartmentCreate.cs" />
   </ItemGroup>
@@ -338,6 +339,7 @@
     <Content Include="Views\AR\Robots.cshtml" />
     <Content Include="Views\AR\FRView.cshtml" />
     <Content Include="Views\MB\MB1.cshtml" />
+    <Content Include="Views\MB\Form1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

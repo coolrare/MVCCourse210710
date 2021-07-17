@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVCCourse210710.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -46,6 +47,18 @@ namespace MVCCourse210710.Controllers
         public ActionResult MB8()
         {
             return View("MB1");
+        }
+
+
+        public ActionResult Form1()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Form1(MBViewModel data)
+        {
+            return View(data);
         }
     }
 }
