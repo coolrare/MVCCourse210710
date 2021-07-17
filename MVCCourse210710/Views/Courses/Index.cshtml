@@ -1,8 +1,39 @@
 ﻿@model IEnumerable<MVCCourse210710.Models.Course>
+@using MVCCourse210710.ViewModels
 
 @{
     ViewBag.Title = "Index";
 }
+
+@functions {
+    public CourseFilter BuildCourseFilter(string sortBy, string sortDirection)
+    {
+        return new CourseFilter()
+        {
+            keyword = Html.Value("keyword").ToString(),
+            sortBy = Html.Value("sortBy").ToString(),
+            sortDirection = Html.Value("sortDirection").ToString()
+        };
+    }
+}
+
+@section Scripts {
+<script>
+    function submitForm(e) {
+        e.target.form.submit();
+    }
+    function clearForm(e) {
+        if ((e instanceof KeyboardEvent && e.code == "Escape") || (e instanceof MouseEvent)) {
+            e.target.form.keyword.value = '';
+            e.target.form.submit();
+        }
+    }
+    @(Html.Id("keyword")).addEventListener("keyup", clearForm)
+    clearBtn.addEventListener("click", clearForm);
+    searchBtn.addEventListener("click", submitForm);
+</script>
+}
+
 
 <h2>Index</h2>
 
@@ -10,17 +41,21 @@
     @Html.ActionLink("Create New", "Create")
     @if (TempData["Message"] != null)
     {
-       <text>
-        | <span style="color: red">@TempData["Message"]</span>
-       </text>
+        <text>
+            | <span style="color: red">@TempData["Message"]</span>
+        </text>
     }
 </p>
 
 @using (Html.BeginForm("Index", "Courses", FormMethod.Get))
 {
     <p>
-        搜尋：@Html.TextBox("keyword")
+        搜尋：@Html.TextBox("keyword", null, new { autofocus = "autofocus" })
+        <input id="searchBtn" type="button" value="搜尋" />
+        <input id="clearBtn" type="button" value="清空" />
     </p>
+    @Html.Hidden("sortBy", "CourseId")
+    @Html.Hidden("sortDirection", "ASC")
 }
 
 <table class="table">
@@ -29,17 +64,11 @@
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
-            <a href="@Url.Action("Index", new {
-                    sortBy = "Credits", 
-                    sortDirection = "ASC", 
-                    keyword = Html.Value("keyword") })">⬆</a>
-            
+            <a href="@Url.Action("Index", BuildCourseFilter("Credits", "ASC"))">⬆</a>
+
             @Html.DisplayNameFor(model => model.Credits)
 
-            <a href="@Url.Action("Index", new { 
-                    sortBy = "Credits", 
-                    sortDirection = "DESC", 
-                    keyword = Html.Value("keyword") })">⬇</a>
+            <a href="@Url.Action("Index", BuildCourseFilter("Credits", "DESC"))">⬇</a>
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Department.Name)
@@ -47,23 +76,23 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Credits)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Department.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CourseID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CourseID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CourseID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Credits)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.CourseID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.CourseID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.CourseID })
+            </td>
+        </tr>
+    }
 
 </table>
