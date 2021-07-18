@@ -8,7 +8,7 @@ namespace MVCCourse210710.Models
 	{
 		public Department FindOne(int id)
 		{
-			return base.All().FirstOrDefault(p => p.DepartmentID == id);
+			return this.All().FirstOrDefault(p => p.DepartmentID == id);
 		}
 
 	}
