@@ -12,5 +12,10 @@ namespace MVCCourse210710.Controllers
         {
             return PartialView();
         }
+
+        public ActionResult Page1()
+        {
+            return View();
+        }
     }
 }

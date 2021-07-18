@@ -361,6 +361,8 @@
     <Content Include="Views\AR\GetXML.cshtml" />
     <Content Include="Views\Shared\ErrorDbEntityValidationException.cshtml" />
     <Content Include="Views\VT\Index.cshtml" />
+    <Content Include="Views\VT\Page1.cshtml" />
+    <Content Include="Views\Dept\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
