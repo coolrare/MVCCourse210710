@@ -143,6 +143,7 @@
     <Compile Include="Controllers\DeptController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MBController.cs" />
+    <Compile Include="Controllers\MetroController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\VTController.cs" />
@@ -518,6 +519,7 @@
     <Content Include="Views\VT\Index.cshtml" />
     <Content Include="Views\VT\Page1.cshtml" />
     <Content Include="Views\Dept\_ViewStart.cshtml" />
+    <Content Include="Views\Metro\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
