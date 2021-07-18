@@ -19,7 +19,7 @@ namespace MVCCourse210710.Models
 
         private bool HasDirtyWord(string name)
         {
-            if (name.Contains("Fxxx"))
+            if (name.Contains("shxx"))
             {
                 return true;
             }

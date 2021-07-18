@@ -6,6 +6,10 @@ namespace MVCCourse210710.Models
 {   
 	public  class DepartmentRepository : EFRepository<Department>, IDepartmentRepository
 	{
+		public Department FindOne(int id)
+		{
+			return base.All().FirstOrDefault(p => p.DepartmentID == id);
+		}
 
 	}
 

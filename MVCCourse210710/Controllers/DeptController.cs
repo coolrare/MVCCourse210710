@@ -13,6 +13,8 @@ namespace MVCCourse210710.Controllers
 {
     public class DeptController : BaseController
     {
+        DepartmentRepository repo = RepositoryHelper.GetDepartmentRepository();
+
         public DeptController()
         {
             db.Database.Log = (msg) => Debug.WriteLine(msg);
@@ -20,6 +22,43 @@ namespace MVCCourse210710.Controllers
 
         public ActionResult Index()
         {
+            return View(db.Department.Include(d => d.Manager));
+        }
+
+        public ActionResult BatchEdit()
+        {
+            return View(db.Department.Include(d => d.Manager));
+        }
+
+        [HttpPost]
+        public ActionResult BatchEdit(BatchEditViewModel[] data)
+        {
+            if (ModelState.IsValid)
+            {
+                foreach (var item in data)
+                {
+                    var one = repo.FindOne(item.DepartmentID);
+                    one.InjectFrom(item);
+                }
+
+                try
+                {
+                    repo.UnitOfWork.Commit();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                {
+                    foreach (var eves in ex.EntityValidationErrors)
+                    {
+                        foreach (var ves in eves.ValidationErrors)
+                        {
+                            throw new Exception(ves.PropertyName + ": " + ves.ErrorMessage);
+                        }
+                    }
+                }
+
+                return RedirectToAction("Index");
+            }
+
             return View(db.Department.Include(d => d.Manager));
         }
 

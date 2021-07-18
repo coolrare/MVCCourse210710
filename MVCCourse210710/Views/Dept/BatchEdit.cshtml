@@ -1,0 +1,61 @@
+﻿@model IEnumerable<MVCCourse210710.Models.Department>
+
+@{
+    ViewBag.Title = "BatchEdit";
+}
+
+<h2>BatchEdit</h2>
+
+@using (Html.BeginForm())
+{
+
+    <button type="submit">批次更新</button>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Budget)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Manager.LastName)
+            </th>
+        </tr>
+
+        @{ 
+            var defaultHtmlAttrs = new { htmlAttributes = new { @class = "form-control" } };
+            var defaultErrorClass = new { @class = "text-danger" };
+
+            var data = Model.ToArray();
+        }
+
+        @for (int i = 0; i < data.Length; i++)
+        {
+            <tr>
+                <td>
+                    @Html.HiddenFor(modelItem => data[i].DepartmentID)
+                    @Html.EditorFor(modelItem => data[i].Name, defaultHtmlAttrs)
+                    @Html.ValidationMessageFor(model => data[i].Name, "", defaultErrorClass)
+                </td>
+                <td class="col-xs-2">
+                    @Html.EditorFor(modelItem => data[i].Budget, defaultHtmlAttrs)
+                    @Html.ValidationMessageFor(model => data[i].Budget, "", defaultErrorClass)
+                </td>
+                <td class="col-xs-2">
+                    @Html.EditorFor(modelItem => data[i].StartDate, defaultHtmlAttrs)
+                    @Html.ValidationMessageFor(model => data[i].StartDate, "", defaultErrorClass)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => data[i].Manager.LastName)
+                </td>
+            </tr>
+        }
+
+    </table>
+
+}
