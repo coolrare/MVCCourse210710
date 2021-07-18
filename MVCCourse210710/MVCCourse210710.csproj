@@ -131,6 +131,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionFilters\ContentTypeAttribute.cs" />
     <Compile Include="ActionFilters\產生ViewBag點InstructorID並設定SelectList給ViewAttribute.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -356,6 +357,7 @@
     <Content Include="Views\People\Details.cshtml" />
     <Content Include="Views\People\Edit.cshtml" />
     <Content Include="Views\People\Index.cshtml" />
+    <Content Include="Views\AR\GetXML.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Web.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -58,6 +59,12 @@ namespace MVCCourse210710.Controllers
             {
                 Name = "Will"
             }, JsonRequestBehavior.AllowGet);
+        }
+
+        [ContentType("text/xml")]
+        public ActionResult GetXML()
+        {
+            return PartialView();
         }
 
         //public ActionResult ExcelR()
