@@ -9,6 +9,7 @@ using System.Diagnostics;
 using MVCCourse210710.ViewModels;
 using Omu.ValueInjecter;
 using MVCCourse210710.ActionFilters;
+using System.Data.Entity.Validation;
 
 namespace MVCCourse210710.Controllers
 {
@@ -32,6 +33,7 @@ namespace MVCCourse210710.Controllers
         }
 
         [HttpPost]
+        [HandleError(ExceptionType = typeof(DbEntityValidationException), View = "ErrorDbEntityValidationException")]
         public ActionResult BatchEdit(BatchEditViewModel[] data)
         {
             if (ModelState.IsValid)
@@ -42,20 +44,7 @@ namespace MVCCourse210710.Controllers
                     one.InjectFrom(item);
                 }
 
-                try
-                {
-                    repo.UnitOfWork.Commit();
-                }
-                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-                {
-                    foreach (var eves in ex.EntityValidationErrors)
-                    {
-                        foreach (var ves in eves.ValidationErrors)
-                        {
-                            throw new Exception(ves.PropertyName + ": " + ves.ErrorMessage);
-                        }
-                    }
-                }
+                repo.UnitOfWork.Commit();
 
                 return RedirectToAction("Index");
             }
@@ -81,6 +70,7 @@ namespace MVCCourse210710.Controllers
 
         [HttpPost]
         [產生ViewBag點InstructorID並設定SelectList給View]
+        [HandleError(ExceptionType = typeof(DbEntityValidationException), View = "ErrorDbEntityValidationException")]
         public ActionResult Create(DepartmentCreate department)
         {
             if (ModelState.IsValid)
@@ -90,22 +80,7 @@ namespace MVCCourse210710.Controllers
                 dept.StartDate = DateTime.Now;
 
                 db.Department.Add(dept);
-                try
-                {
-                    db.SaveChanges();
-                }
-                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-                {
-                    foreach (var eves in ex.EntityValidationErrors)
-                    {
-                        foreach (var ves in eves.ValidationErrors)
-                        {
-                            throw new Exception(ves.PropertyName + ": " + ves.ErrorMessage);
-                        }
-                    }
-                }
-
-                //db.Department_Insert(department.Name, department.Budget, DateTime.Now, null);
+                db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
