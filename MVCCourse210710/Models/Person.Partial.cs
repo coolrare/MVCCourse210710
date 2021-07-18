@@ -8,7 +8,7 @@ namespace MVCCourse210710.Models
     [MetadataType(typeof(PersonMetaData))]
     public partial class Person
     {
-        [ReadOnly(true)]
+        [System.ComponentModel.DataAnnotations.Schema.NotMapped]
         public string DisplayName
         {
             get { return this.FirstName + " " + this.LastName; }
