@@ -8,6 +8,7 @@ using System.Data.Entity;
 using System.Diagnostics;
 using MVCCourse210710.ViewModels;
 using Omu.ValueInjecter;
+using MVCCourse210710.ActionFilters;
 
 namespace MVCCourse210710.Controllers
 {
@@ -72,18 +73,14 @@ namespace MVCCourse210710.Controllers
             return View(department);
         }
 
+        [產生ViewBag點InstructorID並設定SelectList給View]
         public ActionResult Create()
         {
-            var personDDLList = db.Person.Select(p => new {
-                p.ID,
-                Name = p.FirstName + " " + p.LastName
-            });
-            ViewBag.InstructorID = new SelectList(personDDLList, "ID", "Name");
-
             return View();
         }
 
         [HttpPost]
+        [產生ViewBag點InstructorID並設定SelectList給View]
         public ActionResult Create(DepartmentCreate department)
         {
             if (ModelState.IsValid)
@@ -113,15 +110,10 @@ namespace MVCCourse210710.Controllers
                 return RedirectToAction("Index");
             }
 
-            var personDDLList = db.Person.Select(p => new {
-                p.ID,
-                Name = p.FirstName + " " + p.LastName
-            });
-            ViewBag.InstructorID = new SelectList(personDDLList, "ID", "Name");
-
             return View(department);
         }
 
+        [產生ViewBag點InstructorID並設定SelectList給View]
         public ActionResult Edit(int id)
         {
             var department = (from p in db.Department
@@ -139,16 +131,11 @@ namespace MVCCourse210710.Controllers
                 return HttpNotFound();
             }
 
-            var personDDLList = db.Person.Select(p => new {
-                p.ID,
-                Name = p.FirstName + " " + p.LastName
-            });
-            ViewBag.InstructorID = new SelectList(personDDLList, "ID", "Name");
-
             return View(department);
         }
 
         [HttpPost]
+        [產生ViewBag點InstructorID並設定SelectList給View]
         public ActionResult Edit(int id, DepartmentEdit department)
         {
             if (ModelState.IsValid)
@@ -159,12 +146,6 @@ namespace MVCCourse210710.Controllers
 
                 return RedirectToAction("Index");
             }
-
-            var personDDLList = db.Person.Select(p => new {
-                p.ID,
-                Name = p.FirstName + " " + p.LastName
-            });
-            ViewBag.InstructorID = new SelectList(personDDLList, "ID", "Name");
 
             return View(department);
         }

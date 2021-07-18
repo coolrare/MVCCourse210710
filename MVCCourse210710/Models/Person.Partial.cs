@@ -2,13 +2,19 @@ namespace MVCCourse210710.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     
     [MetadataType(typeof(PersonMetaData))]
     public partial class Person
     {
+        [ReadOnly(true)]
+        public string DisplayName
+        {
+            get { return this.FirstName + " " + this.LastName; }
+        }
     }
-    
+
     public partial class PersonMetaData
     {
         [Required]
