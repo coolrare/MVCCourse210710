@@ -12,8 +12,7 @@
     @Html.ActionLink("Batch Edit", "BatchEdit")
 </p>
 
-@Html.PagedListPager(Model as IPagedList, (p) => Url.Action("Index", new { pageNo = p }),
-    X.PagedList.Mvc.Common.PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing("#Main"))
+@Html.PagedListPager(Model as IPagedList, (p) => Url.Action("Index", new { pageNo = p }))
 
 <table class="table">
     <tr>
@@ -58,10 +57,4 @@
 
 </table>
 
-@Html.PagedListPager(Model as IPagedList, (p) => Url.Action("Index", new { pageNo = p }),
-    X.PagedList.Mvc.Common.PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing("#Main"))
-
-@if (IsAjax)
-{
-    Layout = "";
-}
+@Html.PagedListPager(Model as IPagedList, (p) => Url.Action("Index", new { pageNo = p }))
