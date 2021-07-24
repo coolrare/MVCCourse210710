@@ -21,7 +21,7 @@ namespace MVCCourse210710.Models
         public string Title { get; set; }
         [Required]
         [DisplayName("課程評價")]
-        [UIHint("Enum")]
+        [UIHint("Stars")]
         public Credits Credits { get; set; }
         [Required]
         public int DepartmentID { get; set; }

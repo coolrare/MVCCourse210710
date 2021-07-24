@@ -520,13 +520,15 @@
     <Content Include="Views\Shared\ErrorDbEntityValidationException.cshtml" />
     <Content Include="Views\VT\Index.cshtml" />
     <Content Include="Views\VT\Page1.cshtml" />
-    <Content Include="Views\Dept\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.Metro.cshtml" />
     <Content Include="Views\Metro\_ViewStart.cshtml" />
     <Content Include="Views\Dept\Details_Courses.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Enum-radio.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Enum.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Date.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Stars.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

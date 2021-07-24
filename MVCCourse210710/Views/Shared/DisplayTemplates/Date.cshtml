@@ -1,0 +1,6 @@
+﻿@model DateTime?
+
+@if (Model.HasValue)
+{
+    @:民國 @(Model.Value.Year-1911) 年 @Model.Value.Month 月 @Model.Value.Day 日
+}
