@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MVCCourse210710.Models.Department>
+﻿@model IEnumerable<Department>
 
 @{
     ViewBag.Title = "Index";
@@ -11,6 +11,9 @@
     |
     @Html.ActionLink("Batch Edit", "BatchEdit")
 </p>
+
+@Html.PagedListPager(Model as IPagedList, (p) => Url.Action("Index", new { pageNo = p }))
+
 <table class="table">
     <tr>
         <th>
@@ -28,27 +31,30 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Budget)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Manager.FirstName)
-            @Html.DisplayFor(modelItem => item.Manager.LastName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DepartmentID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DepartmentID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DepartmentID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Budget)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manager.FirstName)
+                @Html.DisplayFor(modelItem => item.Manager.LastName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.DepartmentID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.DepartmentID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.DepartmentID })
+            </td>
+        </tr>
+    }
 
 </table>
+
+@Html.PagedListPager(Model as IPagedList, (p) => Url.Action("Index", new { pageNo = p }))

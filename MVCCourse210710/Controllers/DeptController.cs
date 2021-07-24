@@ -10,6 +10,7 @@ using MVCCourse210710.ViewModels;
 using Omu.ValueInjecter;
 using MVCCourse210710.ActionFilters;
 using System.Data.Entity.Validation;
+using X.PagedList;
 
 namespace MVCCourse210710.Controllers
 {
@@ -26,9 +27,12 @@ namespace MVCCourse210710.Controllers
             repoCourse = RepositoryHelper.GetCourseRepository(repo.UnitOfWork);
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int pageNo = 1, int pageSize = 3)
         {
-            return View(db.Department.Include(d => d.Manager));
+            var data = db.Department.OrderBy(p => p.DepartmentID)
+                .ToPagedList(pageNo, pageSize);
+
+            return View(data);
         }
 
         public ActionResult BatchEdit()
