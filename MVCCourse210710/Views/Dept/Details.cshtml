@@ -53,32 +53,7 @@
     </dl>
 </div>
 
-<h3>課程清單</h3>
-
-<table class="table">
-    <tr>
-        <th>
-            Title
-        </th>
-        <th>
-            Credits
-        </th>
-    </tr>
-
-    @foreach (var item in Model.Course)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Credits)
-            </td>
-        </tr>
-    }
-
-</table>
-
+@Html.Partial("Details_Courses", Model.Course)
 
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.DepartmentID }) |
