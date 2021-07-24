@@ -1,7 +1,9 @@
 namespace MVCCourse210710.Models
 {
+    using MVCCourse210710.ValidationAttributes;
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     
     [MetadataType(typeof(CourseMetaData))]
@@ -15,8 +17,11 @@ namespace MVCCourse210710.Models
         public int CourseID { get; set; }
         
         [StringLength(50, ErrorMessage="欄位長度不得大於 50 個字元")]
+        [DisplayName("課程名稱")]
+        [是否為身份證字號]
         public string Title { get; set; }
         [Required]
+        [DisplayName("課程評價")]
         public int Credits { get; set; }
         [Required]
         public int DepartmentID { get; set; }

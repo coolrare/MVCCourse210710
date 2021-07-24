@@ -53,7 +53,7 @@ namespace MVCCourse210710.Controllers
         // GET: Courses/Create
         public ActionResult Create()
         {
-            ViewBag.DepartmentID = new SelectList(repoDept.All(), "DepartmentID", "Name");
+            ViewBag.DepartmentID = new SelectList(repoDept.All(), "DepartmentID", "Name", 16);
             return View();
         }
 
@@ -72,7 +72,7 @@ namespace MVCCourse210710.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.DepartmentID = new SelectList(repoDept.All(), "DepartmentID", "Name", course.DepartmentID);
+            ViewBag.DepartmentID = new SelectList(repoDept.All(), "DepartmentID", "Name");
             return View(course);
         }
 
