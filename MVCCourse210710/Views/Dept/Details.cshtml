@@ -53,7 +53,9 @@
     </dl>
 </div>
 
-@Html.Partial("Details_Courses", Model.Course)
+@*@Html.Partial("Details_Courses", Model.Course)*@
+
+@Html.Action("Details_Courses", new { DepartmentID = Model.DepartmentID })
 
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.DepartmentID }) |

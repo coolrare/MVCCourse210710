@@ -17,9 +17,13 @@ namespace MVCCourse210710.Controllers
     {
         DepartmentRepository repo = RepositoryHelper.GetDepartmentRepository();
 
+        CourseRepository repoCourse;
+
         public DeptController()
         {
             db.Database.Log = (msg) => Debug.WriteLine(msg);
+
+            repoCourse = RepositoryHelper.GetCourseRepository(repo.UnitOfWork);
         }
 
         public ActionResult Index()
@@ -60,6 +64,11 @@ namespace MVCCourse210710.Controllers
                 return HttpNotFound();
             }
             return View(department);
+        }
+
+        public ActionResult Details_Courses(int DepartmentID)
+        {
+            return View(repoCourse.Where(p => p.DepartmentID == DepartmentID));
         }
 
         [產生ViewBag點InstructorID並設定SelectList給View]
