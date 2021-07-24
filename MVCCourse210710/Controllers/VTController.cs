@@ -17,5 +17,10 @@ namespace MVCCourse210710.Controllers
         {
             return View();
         }
+
+        public ActionResult DemoXSS()
+        {
+            return View();
+        }
     }
 }

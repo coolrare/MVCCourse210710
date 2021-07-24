@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "DemoXSS";
+}
+
+<h2>DemoXSS</h2>
+
+<hr />
+
+@{ 
+    var data = @"<h1>
+        XSS
+    </h1>";
+
+    var script = "<script>alert('XSS');</script>";
+}
+
+data = @data
+
+script = @script
+
+<a href="/Home/Index?k=@(Url.Encode("多奇數位"))">多奇數位</a>
+
+<script>
+    var a = '@Ajax.JavaScriptStringEncode(data)';
+
+</script>
