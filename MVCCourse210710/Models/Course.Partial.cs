@@ -18,11 +18,11 @@ namespace MVCCourse210710.Models
         
         [StringLength(50, ErrorMessage="欄位長度不得大於 50 個字元")]
         [DisplayName("課程名稱")]
-        [是否為身份證字號]
         public string Title { get; set; }
         [Required]
         [DisplayName("課程評價")]
-        public int Credits { get; set; }
+        [UIHint("Enum")]
+        public Credits Credits { get; set; }
         [Required]
         public int DepartmentID { get; set; }
     

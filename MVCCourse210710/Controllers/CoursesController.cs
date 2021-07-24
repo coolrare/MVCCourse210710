@@ -88,6 +88,7 @@ namespace MVCCourse210710.Controllers
             {
                 return HttpNotFound();
             }
+
             ViewBag.DepartmentID = new SelectList(repoDept.All(), "DepartmentID", "Name", course.DepartmentID);
             return View(course);
         }
