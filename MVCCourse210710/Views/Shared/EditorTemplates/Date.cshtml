@@ -10,5 +10,7 @@ else
 }
 
 <script>
-$("#@Html.Id("")").datepicker();
+    deferExecution(function() {
+        $("#@Html.Id("")").datepicker();
+    })
 </script>
