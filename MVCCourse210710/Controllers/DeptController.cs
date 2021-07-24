@@ -84,6 +84,7 @@ namespace MVCCourse210710.Controllers
         [HttpPost]
         [產生ViewBag點InstructorID並設定SelectList給View]
         [HandleError(ExceptionType = typeof(DbEntityValidationException), View = "ErrorDbEntityValidationException")]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(DepartmentCreate department)
         {
             if (ModelState.IsValid)
