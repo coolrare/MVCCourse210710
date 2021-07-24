@@ -148,6 +148,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ARController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\Courses1Controller.cs" />
@@ -277,6 +278,7 @@
     <Compile Include="ValidationAttributes\是否為身份證字號Attribute.cs" />
     <Compile Include="ViewModels\BatchEditViewModel.cs" />
     <Compile Include="ViewModels\CourseFilter.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MBViewModel.cs" />
     <Compile Include="ViewModels\DepartmentEdit.cs" />
     <Compile Include="ViewModels\DepartmentCreate.cs" />
@@ -566,6 +568,7 @@
     <Content Include="Views\Courses1\Details.cshtml" />
     <Content Include="Views\Courses1\Edit.cshtml" />
     <Content Include="Views\Courses1\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

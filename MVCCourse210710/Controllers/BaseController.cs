@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace MVCCourse210710.Controllers
 {
+    [Authorize]
     public abstract class BaseController : Controller
     {
         protected ContosoUniversityEntities db = new ContosoUniversityEntities();
